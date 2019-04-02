@@ -6,7 +6,7 @@ import { getItems } from "../actions/itemActions";
 import uuid from "uuid";
 import PropTypes from "prop-types";
 
-class ShoppingList extends React.Component { 
+class ShoppingList extends React.Component  { 
   componentDidMount() {
     this.props.getItems(); 
   }
@@ -57,13 +57,13 @@ class ShoppingList extends React.Component {
   }
 }
 
-ShoppingList.prototype = {
+ShoppingList.protoType = {
   getItems: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  item: state.item.items
+  item: state.item
 });
 
 export default connect(
