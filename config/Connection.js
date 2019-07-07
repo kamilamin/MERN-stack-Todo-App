@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI: 'mongodb://kamilamin:babaskt0343@ds031895.mlab.com:31895/mern_todo_app'
+    mongoURI: 'mongodb+srv://FirstAuth:babaskt0343@cluster0-xhal9.mongodb.net/test?retryWrites=true&w=majority'
 }

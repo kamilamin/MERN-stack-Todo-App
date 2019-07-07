@@ -1,22 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
-const items = require('./routes/api/items')
 const app = express()
 
 //body parser Middlewear
-app.use(bodyParser.json())
+app.use(express.json())
 
 // DB Connection
 const db = require('./config/Connection').mongoURI;
 // Connect mongoDB
 mongoose
-    .connect(db)
+    .connect(db, {
+        useNewUrlParser: true,
+        useCreateIndex: true
+    })
     .then(() => console.log('Mongo Connected'))
     .catch(err => console.log(err))
 
 // Use routes
-app.use('/api/items', items);
+app.use('/api/items', require('./routes/api/items'));
+app.use('/api/users', require('./routes/api/users'));
 
 //Serve static assets if we're in production
 if(process.env.NODE_ENV === "production") {
@@ -27,7 +29,6 @@ if(process.env.NODE_ENV === "production") {
         res.sendFile(__dirname, 'client', 'build', 'index.html')
     });
 }
-
 
 const port = process.env.PORT || 5000;
 
