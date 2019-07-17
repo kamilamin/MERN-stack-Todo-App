@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const config = require('config');
+
 const app = express()
 
 //body parser Middlewear
 app.use(express.json())
 
 // DB Connection
-const db = require('./config/Connection').mongoURI;
+const db = config.get('mongoURI')
 // Connect mongoDB
 mongoose
     .connect(db, {
@@ -19,6 +21,7 @@ mongoose
 // Use routes
 app.use('/api/items', require('./routes/api/items'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
 
 //Serve static assets if we're in production
 if(process.env.NODE_ENV === "production") {
