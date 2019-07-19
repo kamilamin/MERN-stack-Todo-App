@@ -8,7 +8,6 @@ import {
   AUTH_ERROR,
   LOGOUT_SUCCESS,
 } from '../actions/types';
-import {stat} from 'fs';
 
 const initialState = {
   token: localStorage.getItem ('token'),
@@ -43,6 +42,7 @@ export default function (state = initialState, action) {
     case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
     case REGISTER_FAIL:
+      localStorage.removeItem ('token');
       return {
         ...state,
         token: null,
