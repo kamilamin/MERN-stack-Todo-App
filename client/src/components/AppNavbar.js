@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Collapse,
   Navbar,
@@ -7,19 +7,20 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container
-} from "reactstrap";
+  Container,
+} from 'reactstrap';
+import RegisterModal from './auth/RegisterModal';
 
 class AppNavbar extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
   toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
+    this.setState ({
+      isOpen: !this.state.isOpen,
     });
   };
-  render() {
+  render () {
     return (
       <div>
         <Navbar color="dark" dark expand="sm" className="mb-5">
@@ -27,11 +28,11 @@ class AppNavbar extends Component {
             <NavbarBrand href="/">MERN Todo App</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        <NavLink href="https://www.github.com/kamilamin">Github</NavLink>
-                    </NavItem>
-                </Nav>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <RegisterModal />
+                </NavItem>
+              </Nav>
             </Collapse>
           </Container>
         </Navbar>
