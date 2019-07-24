@@ -62,6 +62,12 @@ export const register = ({name, email, password}) => dispatch => {
       });
     });
 };
+// Logout User and clear token
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+};
 
 // Setup config/headers and token
 export const tokenConfig = getState => {
